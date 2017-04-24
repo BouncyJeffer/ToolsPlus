@@ -1,0 +1,16 @@
+name: ToolsPlus
+main: ToolsPlus\main
+description: A plugin that'll give your server more features.
+version: 1.0.0
+author: BouncyJeffer
+api: [3.0.0, 3.0.0-ALPHA4]
+load: POSTWORLD
+commands:
+ kickall:
+ description: Kicks all other players off the server.
+ usage: "/kickall"
+ permission: toolsplus.kickall
+permissions:
+ toolsplus.kickall:
+  description: Permission to kick all players offline.
+  default: false
