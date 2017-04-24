@@ -6,6 +6,10 @@ author: BouncyJeffer
 api: [3.0.0, 3.0.0-ALPHA4]
 load: POSTWORLD
 commands:
+ heal:
+  description: Heal a player
+  usage: "/heal <player>"
+  permission: toolsplus.heal
  xyz:
   description: View your X, Y and Z coordinates.
   usage: "/xyz"
@@ -19,6 +23,9 @@ commands:
   usage: "/kickall"
   permission: toolsplus.kickall
 permissions:
+ toolsplus.heal:
+  description: Permission to heal players.
+  default: true
  toolsplus.xyz:
   description: Permission to view your X, Y and Z coordinates.
   default: true
