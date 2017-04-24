@@ -20,13 +20,14 @@ class main extends PluginBase {
 		switch($command->getName()){
 			case "kickall":
 			if( isset($args[0])){
-				$players = $this->getServer()->getOnlinePlayers();
-				foreach($players as $p){
-					if($p !== $sender){
-						$p->kick(implode(" ", $args));
-					}
+				$reason = implode(" ", $args);
 				} else {
 					$reason = "Unknown.";
+				}
+			}
+			foreach($players as $p){
+				if($p !== $sender){
+					$p->kick($reason, true);
 				}
 			}
 			break;
