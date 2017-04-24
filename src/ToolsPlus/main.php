@@ -19,7 +19,7 @@ class main extends PluginBase {
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		switch($command->getName()){
 			case "kickall":
-			if( isset($args[0])){
+			if(count($args) < 1){
 				$reason = implode(" ", $args);
 				} else {
 					$reason = "Unknown.";
