@@ -30,6 +30,7 @@ class main extends PluginBase {
 					$p->kick($reason, true);
 				}
 			}
+			$sender->sendMessage(TextFormat::YELLOW."All other players have been kicked.");
 			break;
 		}
 	}
