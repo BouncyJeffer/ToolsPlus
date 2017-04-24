@@ -6,6 +6,10 @@ author: BouncyJeffer
 api: [3.0.0, 3.0.0-ALPHA4]
 load: POSTWORLD
 commands:
+ xyz:
+  description: View your X, Y and Z coordinates.
+  usage: "/xyz"
+  permission: toolsplus.xyz
  alert:
   description: Send an alert to the entire server.
   usage: "/alert <message>"
@@ -15,9 +19,12 @@ commands:
   usage: "/kickall"
   permission: toolsplus.kickall
 permissions:
- tools.plus:
+ toolsplus.xyz:
+  description: Permission to view your X, Y and Z coordinates.
+  default: true
+ toolsplus.alert:
   description: Permission to send server wide alerts
-  permission: false
+  default: false
  toolsplus.kickall:
   description: Permission to kick all players offline.
   default: false
