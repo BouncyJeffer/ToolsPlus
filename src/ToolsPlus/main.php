@@ -6,25 +6,22 @@ use pocketmine\plugin\PluginBase;
 use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
+use pocketmine\level\Position;
 class main extends PluginBase {
 	public function onLoad(){
 		$this->getLogger()->info(TextFormat::AQUA."currently being loaded.");
 	}
 	public function onEnable(){
 		$this->getLogger()->info(TextFormat::GREEN."has been successfully loaded.");
-		if(!is_dir($this->getDataFolder())){
-			@mkdir($this->getDataFolder());
-		} 
-		if(!file_exists($this->getDataFolder()."config.json")){
-			$config = new Config($this->getDataFolder()."config.json", CONFIG::JSON);
-		}
 	}
 	public function onDisable(){
 		$this->getLogger()->info(TextFormat::RED."has been disabled.");
 	}
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
-		$config = new Config($this->getDataFolder()."config.json", CONFIG::JSON);
 		switch($command->getName()){
+			case "xyz":
+			$sender->sendMessage(TextFormat::YELLOW."X: ".TextFormat::RED.explode(".", $sender->getX()).TextFormat::YELLOW." Y: ".TextFormat::RED.explode(".", $sender->getY()).TextFormat::YELLOW." Z: ".TextFormat::YELLOW.explode(".", $sender->getZ()));
+			break;
 			case "alert":
 			if(count($args) < 1){
 				foreach($this->getServer()->getOnlinePlayers() as $p){
