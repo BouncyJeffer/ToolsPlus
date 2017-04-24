@@ -7,6 +7,8 @@ use pocketmine\command\CommandSender;
 use pocketmine\command\Command;
 use pocketmine\utils\TextFormat;
 use pocketmine\level\Position;
+use pocketmine\event\entity\EntityRegainHealthEvent;
+use pocketmine\level\particle\HeartParticle;
 class main extends PluginBase {
 	public function onLoad(){
 		$this->getLogger()->info(TextFormat::AQUA."currently being loaded.");
@@ -19,6 +21,16 @@ class main extends PluginBase {
 	}
 	public function onCommand(CommandSender $sender, Command $command, $label, array $args){
 		switch($command->getName()){
+			case "heal":
+			$player = $this->getServer()->getPlayer($args[0]);
+			if($player instanceof Player){
+				$player->heal($player->getMaxHealth(), new EntityRegainHealthEvent($player, $player->getMaxHealth() - $player->getHealth(), EntityRegainHealthEvent::CAUSE_CUSTOM));
+        		$player->getLevel()->addParticle(new HeartParticle($player->add(0, 2), 4));
+        		$sender->sendMessage(TextFormat::YELLOW.$player." has been healed.");
+        	} else {
+        		$sender->sendMessage(TextFormat::RED."You must define a player.");
+        	}
+        	break;
 			case "xyz":
 			$sender->sendMessage(TextFormat::YELLOW."X: ".TextFormat::RED.explode(".", $sender->getX()).TextFormat::YELLOW." Y: ".TextFormat::RED.explode(".", $sender->getY()).TextFormat::YELLOW." Z: ".TextFormat::YELLOW.explode(".", $sender->getZ()));
 			break;
